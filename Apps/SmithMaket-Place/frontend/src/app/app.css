@@ -1,0 +1,35 @@
+/* Component Specific UI Rules */
+.badge {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+}
+
+.chapter-header-map {
+  background: rgba(16, 185, 129, 0.15) !important;
+  border: 1px solid rgba(16, 185, 129, 0.3) !important;
+}
+
+.chapter-header-map:hover {
+  background: rgba(16, 185, 129, 0.25) !important;
+}
+
+.body-block-map {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+}
+
+.body-block-map:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Spinner rotation anim */
+.spin-svg {
+  animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}

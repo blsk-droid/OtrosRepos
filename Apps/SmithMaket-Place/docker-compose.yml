@@ -10,7 +10,27 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data # <--- Dejamos solo el volumen nombrado aquí
+
+  backend_app:
+    image: python:3.11-slim
+    container_name: antigravity_backend
+    restart: always
+    volumes:
+      - F:\Aplicaciones\MaketNovels\codigo\OtrosRepos\Apps\SmithMaket-Place\backend:/app
+    working_dir: /app
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://admin_antigravity:TuPasswordSeguroAqui@postgres_db:5432/wedding_antigravity_dev
+      - IS_DOCKER=true
+    command: >
+      sh -c "apt-get update && 
+             apt-get install -y weasyprint libpango-1.0-0 libharfbuzz0b libpangoft2-1.0-0 && 
+             pip install -r requirements.txt && 
+             python main.py"
+    depends_on:
+      - postgres_db
 
 volumes:
-  postgres_data:
+  postgres_data: # <--- Docker creará esto de forma segura en su sistema de archivos virtual
